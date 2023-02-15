@@ -25,9 +25,15 @@ public class EventController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/events/delete/{id}")
-    public ResponseEntity deleteEvent(@RequestParam Long id){
+    @DeleteMapping("/events/delete/{id}")
+    public ResponseEntity deleteEvent(@PathVariable Long id){
         eventService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/events/edit/{id}")
+    public ResponseEntity editEvent(@PathVariable Long id, @RequestBody Event event){
+        eventService.edit(id, event);
         return ResponseEntity.ok().build();
     }
 
